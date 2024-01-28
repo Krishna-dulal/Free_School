@@ -7,9 +7,13 @@
 </head>
 <body>
     {% load socialaccount %}
-
-    <h2>Google login </h2>
-    <a href="{% provider_login_url 'google' %}?next=/">Login with Google</a>
-    
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.email }}!</h2>
+        <p>You are logged in with this  {{ user.email }}. Do you want to logout?</p>
+        <a href="{% url 'account_logout' %}">Logout</a>
+    {% else %}
+        <h2>Google Login</h2>
+        <a href="{% provider_login_url 'google' %}?next=/">Login with Google</a>
+    {% endif %}
 </body>
 </html>
