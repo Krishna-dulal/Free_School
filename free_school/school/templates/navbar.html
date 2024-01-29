@@ -72,12 +72,83 @@
             background-color: #ffffff;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
+
+        .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
     </style>
     </head>
 
 <body>
     <header>
         <div id="header">Free School</div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Free Online Courses</button>
+            <div class="dropdown-content">
+              <a href="https://www.coursera.org">Coursera</a>
+              <a href="https://www.edx.org">EDx</a>
+              <a href="https://learning.linkedin.com">LinkedIn Learning</a>
+              <a href="https://www.khanacademy.org/">Khan Academy</a>
+              <a href="https://www.codecademy.com/">Codecademy</a>
+              <a href="https://www.udemy.com/">Udemy</a>
+              <a href="https://pustakalaya.org/en/">Pustakalaya(Nepal)</a>
+              <a href="#">Link 3</a>
+
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">Free Libraries</button>
+            <div class="dropdown-content">
+              <a href="https://archive.org/details/openlibrary/openlibrary/">Internet Archieve</a>
+              <a href="https://www.bartleby.com/">Bartleby</a>
+              <a href="https://oloer.opened.ca/e-pustakalaya-a-free-and-open-digital-library-nepalese/">E-Pustakalya Nepal</a>
+            </div>
+          </div>
+
+
+          <div class="dropdown">
+            <button class="dropbtn">Hardware Donors</button>
+            <div class="dropdown-content">
+              <a href="https://worldcomputerexchange.org/">Computer Exchange</a>
+              <a href="https://www.computeraid.org/">Computer Aid</a>
+              <a href="https://www2.fundsforngos.org/cat/world-computer-exchange-donating-computers-developing-countries/">Donating Computers</a>
+            </div>
+          </div>
+
         <div id="nav">
             {% if request.user.is_authenticated %}
             <a href="{% url 'account_logout' %}">Logout</a>

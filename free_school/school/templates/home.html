@@ -67,18 +67,28 @@
 </head>
 <body>
  {% include 'navbar.html' %}
-    <div class="center">
-        {% if request.user.is_authenticated %}
-            You are logged in <br>
-            <a href="{% provider_login_url 'google' %}" class="button">Login to another account</a>
+ 
+ <div class="center">
+    {% if request.user.is_authenticated %}
+        {% if role == 'Student' %}
+            You are logged in as a Student.
+        {% elif role == 'Teacher' %}
+            You are logged in as a Teacher.
         {% else %}
-            <span class="text"> Welcome to Free school app!</span>
-            <br>
-            <p>To start using free school app, click the <strong> "Get Started" </strong>  button and log in with your Google account.</p>    
-            <br>
-            <a href="{% provider_login_url 'google' %}" class="button">Get Started</a>
+            You are logged in.
         {% endif %}
+        <br>
+        <a href="{% provider_login_url 'google' %}" class="button">Login to another account</a>
+    {% else %}
+        <span class="text">Welcome to Free school app!</span>
+        <br>
+        <p>To start using free school app, click the <strong>"Get Started"</strong> button and log in with your Google account.</p>    
+        <br>
+        <a href="{% provider_login_url 'google' %}" class="button">Get Started</a>
+    {% endif %}
 </div>
+
+
 </body>
 </html>
 
