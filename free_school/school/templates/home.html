@@ -63,6 +63,86 @@
             font-weight: bold;
             font-size: 20px;
         }
+
+        /* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 90px;
+  left: 7px;
+  background-color: rgb(78, 78, 230);
+  overflow-x: hidden;
+  padding-top: 80px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /* Optional Styles */
+    background-color: #f2f2f2;
+    color: #000; 
+}
+
+
+
+
     </style>
 </head>
 <body>
@@ -85,8 +165,37 @@
         <p>To start using free school app, click the <strong>"Get Started"</strong> button and log in with your Google account.</p>    
         <br>
         <a href="{% provider_login_url 'google' %}" class="button">Get Started</a>
+
+
+<div class="sidenav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+    <button class="dropdown-btn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+    <a href="#contact">Search</a>
+  </div>
+  
+  <div class="main">
+    <h2>Free School</h2>
+    <p>Start your new Educational journey here..</p>
+    <p>Feel Free to check Navbar buttons for free resources... </p>
+    <p>Make sure you drop your feedback to us.</p>
+  </div>
+  
     {% endif %}
 </div>
+
+<footer>
+  <p>&copy; 2024 Free School. All Rights Reserved.</p>
+</footer>
 
 
 </body>
