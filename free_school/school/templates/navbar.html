@@ -112,54 +112,142 @@
     </style>
     </head>
 
-<body>
-    <header>
-        <div id="header">Free School</div>
+    <body>
+      <header>
+        <div id="header" data-key="freeSchool">Free School</div>
 
-        <div class="dropdown">
-            <button class="dropbtn">Free Online Courses</button>
-            <div class="dropdown-content">
-              <a href="https://www.coursera.org">Coursera</a>
-              <a href="https://www.edx.org">EDx</a>
-              <a href="https://learning.linkedin.com">LinkedIn Learning</a>
-              <a href="https://www.khanacademy.org/">Khan Academy</a>
-              <a href="https://www.codecademy.com/">Codecademy</a>
-              <a href="https://www.udemy.com/">Udemy</a>
-              <a href="https://pustakalaya.org/en/">Pustakalaya(Nepal)</a>
-              <a href="#">Link 3</a>
-
-            </div>
-          </div>
-
+          <!-- Online Courses Dropdown -->
           <div class="dropdown">
-            <button class="dropbtn">Free Libraries</button>
-            <div class="dropdown-content">
-              <a href="https://archive.org/details/openlibrary/openlibrary/">Internet Archieve</a>
-              <a href="https://www.bartleby.com/">Bartleby</a>
-              <a href="https://oloer.opened.ca/e-pustakalaya-a-free-and-open-digital-library-nepalese/">E-Pustakalya Nepal</a>
-            </div>
+              <button class="dropbtn" data-key="freeOnlineCourses">Free Online Courses</button>
+              <div class="dropdown-content">
+                  <a href="https://www.coursera.org" data-key="coursera">Coursera</a>
+                  <a href="https://www.edx.org" data-key="edx">EDx</a>
+                  <a href="https://learning.linkedin.com" data-key="linkedinLearning">LinkedIn Learning</a>
+                  <a href="https://www.khanacademy.org" data-key="khanAcademy">Khan Academy</a>
+                  <a href="https://www.codecademy.com" data-key="codecademy">Codecademy</a>
+                  <a href="https://www.udemy.com" data-key="udemy">Udemy</a>
+                  <a href="https://pustakalaya.org/en/" data-key="pustakalaya">Pustakalaya(Nepal)</a>
+                  <a href="#" data-key="link3">Link 3</a>
+              </div>
           </div>
-
-
+  
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!-- Free Libraries Dropdown -->
           <div class="dropdown">
-            <button class="dropbtn">Hardware Donors</button>
-            <div class="dropdown-content">
-              <a href="https://worldcomputerexchange.org/">Computer Exchange</a>
-              <a href="https://www.computeraid.org/">Computer Aid</a>
-              <a href="https://www2.fundsforngos.org/cat/world-computer-exchange-donating-computers-developing-countries/">Donating Computers</a>
-            </div>
+              <button class="dropbtn" data-key="freeLibraries">Free Libraries</button>
+              <div class="dropdown-content">
+                  <a href="https://archive.org/details/openlibrary/openlibrary/" data-key="internetArchive">Internet Archive</a>
+                  <a href="https://www.bartleby.com/" data-key="bartleby">Bartleby</a>
+                  <a href="https://oloer.opened.ca/e-pustakalaya-a-free-and-open-digital-library-nepalese/" data-key="ePustakalyaNepal">E-Pustakalya Nepal</a>
+              </div>
           </div>
-          
-
-        <div id="nav">
-            {% if request.user.is_authenticated %}
-            <a href="{% url 'account_logout' %}">Logout</a>
-            {% endif %}
+  
+        
+          <div class="dropdown">
+              <button class="dropbtn" data-key="language">Language</button>
+              <div class="dropdown-content">
+                  <a href="javascript:void(0);" onclick="switchLanguage('en')" data-key="english">English</a>
+                  <a href="javascript:void(0);" onclick="switchLanguage('ne')" data-key="nepali">नेपाली</a>
+              </div>
+          </div> 
+          <div class="dropdown">
+              <button class="dropbtn" data-key="hardwareDonors">Hardware Donors</button>
+              <div class="dropdown-content">
+                  <a href="https://worldcomputerexchange.org/" data-key="computerExchange">Computer Exchange</a>
+                  <a href="https://www.computeraid.org/" data-key="computerAid">Computer Aid</a>
+                  <a href="https://www2.fundsforngos.org/cat/world-computer-exchange-donating-computers-developing-countries/" data-key="donatingComputers">Donating Computers</a>
+              </div>
           </div>
+  
+          <!-- Navigation Links -->
+          <div id="nav">
+              {% if request.user.is_authenticated %}
+              <a href="{% url 'account_logout' %}" data-key="logout">Logout</a>
+              {% endif %}
+          </div>
+  
+         
+        </div>
 
-          
-    </header>
-</body>
+      </header>
+  
+      <script>
+          const translations = {
+              "en": {
+                 "language": "Language",
+                "english": "English",
+                "nepali": "Nepali",
+                  "freeSchool": "Free School",
+                  "freeOnlineCourses": "Free Online Courses",
+                  "coursera": "Coursera",
+                  "edx": "EDx",
+                  "linkedinLearning": "LinkedIn Learning",
+                  "khanAcademy": "Khan Academy",
+                  "codecademy": "Codecademy",
+                  "udemy": "Udemy",
+                  "pustakalaya": "Pustakalaya (Nepal)",
+                  "link3": "Link 3",
+                  "freeLibraries": "Free Libraries",
+                  "internetArchive": "Internet Archive",
+                  "bartleby": "Bartleby",
+                  "ePustakalyaNepal": "E-Pustakalya Nepal",
+                  "hardwareDonors": "Hardware Donors",
+                  "computerExchange": "Computer Exchange",
+                  "computerAid": "Computer Aid",
+                  "donatingComputers": "Donating Computers",
+                  "logout": "Logout",
+                  "language": "Language",
+                  "english": "English",
+                  "nepali": "Nepali"
+   
+              },
+              "ne": {
+                 "freeSchool": "नि: शुल्क विद्यालय", 
+                  "freeOnlineCourses": "नि: शुल्क अनलाइन पाठ्यक्रमहरू",
+                  "coursera": "कोर्सेरा",
+                  "edx": "ईडीएक्स",
+                  "linkedinLearning": "लिंक्डइन लर्निंग",
+                  "khanAcademy": "खान एकेडेमी",
+                  "codecademy": "कोडेकेडमी",
+                  "udemy": "उडेमी",
+                  "pustakalaya": "पुस्तकालय (नेपाल)",
+                  "link3": "लिंक ३",
+                  "freeLibraries": "नि: शुल्क पुस्तकालयहरू",
+                  "internetArchive": "इन्टरनेट आर्काइव",
+                  "bartleby": "बार्टलबी",
+                  "ePustakalyaNepal": "ई-पुस्तकालय नेपाल",
+                  "hardwareDonors": "हार्डवेयर दाताहरू",
+                  "computerExchange": "कम्प्युटर एक्सचेंज",
+                  "computerAid": "कम्प्युटर ऐड",
+                  "donatingComputers": "कम्प्युटर दान",
+                  "logout": "लग आउट",
+                  "language": "भाषा",
+                  "english": "अङ्ग्रेजी",
+                  "nepali": "नेपाली"
+              }
+          };
+  
+          function switchLanguage(lang) {
+  console.log("Switching language to:", lang);
+  document.querySelectorAll("[data-key]").forEach(elem => {
+    const key = elem.getAttribute("data-key");
+    console.log("Translating element:", key);
+    if (translations[lang] && translations[lang][key]) {
+      elem.textContent = translations[lang][key];
+      console.log("Translated:", key, "to", translations[lang][key]);
+    } else {
+      console.log("Translation missing for key:", key);
+    }
+  });
+  document.documentElement.setAttribute('lang', lang); 
+}
+
+      </script>
+
+<script src="translation.js"></script>
+
+  </body>
+  
 </html>
 
 

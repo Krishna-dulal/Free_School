@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Free School</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e6f2ff; /* Set the background color to pale blue */
-            background-image: url('https://example.com/background-image.jpg'); /* Replace with the URL of your desired background image */
+            background-color: #e6f2ff; 
+            background-image: url('https://example.com/background-image.jpg'); 
             background-size: cover;
             background-position: center;
         }
@@ -139,66 +139,95 @@ footer {
     background-color: #f2f2f2;
     color: #000; 
 }
-
-
-
-
     </style>
+    
 </head>
 <body>
- {% include 'navbar.html' %}
- 
- <div class="center">
-    {% if request.user.is_authenticated %}
-        {% if role == 'Student' %}
-            You are logged in as a Student.
-        {% elif role == 'Teacher' %}
-            You are logged in as a Teacher.
-        {% else %}
-            You are logged in.
-        {% endif %}
-        <br>
-        <a href="{% provider_login_url 'google' %}" class="button">Login to another account</a>
-    {% else %}
-        <span class="text">Welcome to Free school app!</span>
-        <br>
-        <p>To start using free school app, click the <strong>"Get Started"</strong> button and log in with your Google account.</p>    
-        <br>
-        <a href="{% provider_login_url 'google' %}" class="button">Get Started</a>
-
-
-<div class="sidenav">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#clients">Clients</a>
-    <a href="#contact">Contact</a>
-    <button class="dropdown-btn">Dropdown 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-    <a href="#contact">Search</a>
+  {% include 'navbar.html' %}
+  
+  <div class="sidenav">
+      <a href="#about" data-key="about">About</a>
+      <a href="#services" data-key="services">Services</a>
+      <a href="#clients" data-key="clients">Clients</a>
+      <a href="#contact" data-key="contact">Contact</a>
+      <button class="dropdown-btn" data-key="dropdown">Dropdown</button>
+      <div class="dropdown-container">
+          <a href="#" data-key="link1">Link 1</a>
+          <a href="#" data-key="link2">Link 2</a>
+          <a href="#" data-key="link3">Link 3</a>
+      </div>
+      <a href="#contact" data-key="search">Search</a>
   </div>
   
   <div class="main">
-    <h2>Free School</h2>
-    <p>Start your new Educational journey here..</p>
-    <p>Feel Free to check Navbar buttons for free resources... </p>
-    <p>Make sure you drop your feedback to us.</p>
+      <p data-key="educationalJourney">Start your new Educational journey here..</p>
+      <p data-key="checkNavButtons">Feel Free to check Navbar buttons for free resources...</p>
+      <p data-key="dropFeedback">Make sure you drop your feedback to us.</p>
   </div>
+
+  <footer>
+      <p>&copy; 2024 Free School. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const translations = {
+      "en": {
+        "about": "About",
+        "services": "Services",
+        "clients": "Clients",
+        "contact": "Contact",
+        "dropdown": "Dropdown",
+        "link1": "Link 1",
+        "link2": "Link 2",
+        "link3": "Link 3",
+        "search": "Search",
+        "welcomeText": "Welcome to Free School App!",
+        "getStarted": "Get Started",
+        "studentLogin": "You are logged in as a Student.",
+        "teacherLogin": "You are logged in as a Teacher.",
+        "loggedIn": "You are logged in.",
+        "loginAnother": "Login to another account",
+        "freeSchool": "Free School",
+        "educationalJourney": "Start your new Educational journey here.",
+        "checkNavButtons": "Feel Free to check Navbar buttons for free resources.",
+        "dropFeedback": "Make sure you drop your feedback to us.",
+        "language": "Language",
+        "english": "English",
+        "nepali": "Nepali"
+      },
+      "ne": {
+        "about": "बारेमा",
+        "services": "सेवाहरू",
+        "clients": "ग्राहकहरु",
+        "contact": "सम्पर्क",
+        "dropdown": "ड्रपडाउन",
+        "link1": "लिंक १",
+        "link2": "लिंक २",
+        "link3": "लिंक ३",
+        "search": "खोज्नुहोस्",
+        "welcomeText": "फ्रि स्कूल एपमा स्वागत छ!",
+        "getStarted": "सुरु गर्नुहोस्",
+        "studentLogin": "तपाईं विद्यार्थीको रूपमा लग - इन हुनुहुन्छ।",
+        "teacherLogin": "तपाईं शिक्षकको रूपमा लग - इन हुनुहुन्छ।",
+        "loggedIn": "तपाईं लग - इन हुनुहुन्छ।",
+        "loginAnother": "अर्को खातामा लगइन गर्नुहोस्",
+        "freeSchool": "नि: शुल्क विद्यालय",
+        "educationalJourney": "यहाँबाट तपाईंको नयाँ शैक्षिक यात्रा सुरु गर्नुहोस्।",
+        "checkNavButtons": "नि: शुल्क स्रोतहरूको लागि नेविगेशन बटनहरू जाँच गर्न स्वतन्त्र महसुस गर्नुहोस्।",
+        "dropFeedback": "कृपया हामीलाई तपाईंको प्रतिक्रिया प्रदान गर्नुहोस्।",
+        "language": "भाषा",
+        "english": "अङ्ग्रेजी",
+        "nepali": "नेपाली"
+      }
+
+    };
+
+  </script>
   
-    {% endif %}
-</div>
-
-<footer>
-  <p>&copy; 2024 Free School. All Rights Reserved.</p>
-</footer>
-
+  <script src="translation.js"></script>
 
 </body>
+
 </html>
 
 
